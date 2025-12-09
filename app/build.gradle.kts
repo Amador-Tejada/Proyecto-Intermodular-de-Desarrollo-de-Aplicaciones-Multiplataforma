@@ -50,6 +50,9 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.recyclerview)
 
+    // Material CalendarView (para decorar días con puntos)
+    implementation("com.prolificinteractive:material-calendarview:1.4.3")
+
     // ===== DEPENDENCIAS PARA FUNCIONALIDADES ESPECÍFICAS =====
 
     // Picasso: librería para cargar y cachear imágenes desde URLs

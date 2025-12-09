@@ -4,35 +4,51 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.databinding.FragmentHomeBinding
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.R
+import com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.ui.TaskViewModel
+import com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.ui.tareas.TaskAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val taskViewModel: TaskViewModel by activityViewModels()
+    private lateinit var adapter: TaskAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+    ): View? {
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAllTasks)
+
+        // En esta lista, un clic no hará nada. Solo es para visualización.
+        adapter = TaskAdapter(mutableListOf(),
+            onItemClick = { /* No action */ },
+            onEdit = { /* No action */ }
+        )
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
+
+        // Observar el mapa de tareas del ViewModel
+        taskViewModel.tasksMap.observe(viewLifecycleOwner) {
+            val allTasks = taskViewModel.getAllTasks()
+            adapter.setList(allTasks)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Ocultar el botón flotante en esta pantalla
+        requireActivity().findViewById<FloatingActionButton>(R.id.fabAdd)?.hide()
     }
 }

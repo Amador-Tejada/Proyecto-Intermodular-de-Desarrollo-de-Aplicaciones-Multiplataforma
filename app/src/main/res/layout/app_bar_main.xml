@@ -22,4 +22,17 @@
 
     <include layout="@layout/content_main" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="Añadir tarea"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@color/white"
+        app:backgroundTint="@color/principalAplicacion"
+        app:layout_anchor="@id/nav_host_fragment_content_main"
+        app:layout_anchorGravity="bottom|end"
+        app:useCompatPadding="true" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

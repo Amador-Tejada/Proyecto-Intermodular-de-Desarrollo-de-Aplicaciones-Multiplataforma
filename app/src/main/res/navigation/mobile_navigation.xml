@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.ui.home.HomeFragment"
+        android:name="com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.ui.tareas.CalendarFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/nav_inventario"
@@ -22,4 +22,10 @@
         android:name="com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.ui.clientes.ClientesFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_clientes" />
+
+    <fragment
+        android:id="@+id/nav_tareas"
+        android:name="com.example.proyectointermodulardedesarrollodeaplicacionesmultiplataforma.ui.home.HomeFragment"
+        android:label="@string/menu_tareas"
+        tools:layout="@layout/fragment_home" />
 </navigation>

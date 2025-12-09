@@ -10,4 +10,10 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Inventario</string>
     <string name="menu_slideshow">Lista de Clientes</string>
+    <string name="menu_tareas">Lista de Tareas</string>
+    <string name="title_hint">Título</string>
+    <string name="date_label">Fecha</string>
+    <string name="change_date">Cambiar fecha</string>
+    <string name="add">Añadir</string>
+    <string name="cancel">Cancelar</string>
 </resources>
